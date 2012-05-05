@@ -10,14 +10,15 @@ This gem gives you access to the whole OVH SOAP API with extra support for SMS h
 Install
 -------
 Add it to your Gemfile (dev version):
-  - gem "ovh_savoni", :git => "git://github.com/thibaultponcelet/ovh_savoni.git"
+    gem "ovh_savoni", :git => "git://github.com/thibaultponcelet/ovh_savoni.git"
 
 Comming soon:
+
   Install it on your system:
-    - gem install ovh_savoni
+      gem install ovh_savoni
 
   Or add it to your Gemfile:
-    - gem 'ovh_savoni', 'x.x.x' 
+      gem 'ovh_savoni', 'x.x.x' 
 
   
 **Version**
@@ -30,11 +31,11 @@ Usage
 -----
 
 **Connection establishment**
-  * For actions with authentications: 
+  For actions with authentications: 
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password")
-  * For SMS user: 
+  For SMS user: 
     savoni = OvhSavoni::SoAPI.new(:sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
-  * Both can be specified to have always full access:
+  Both can be specified to have always full access:
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password", :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
   
 **API access**
