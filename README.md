@@ -82,7 +82,7 @@ Example: Domain info
   - authinfo
   - creation
 
-Example: SMS sending:
+Example: SMS sending
 ------------
 
     require "ovh_savoni"

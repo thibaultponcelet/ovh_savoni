@@ -8,7 +8,8 @@ Savon.configure do |config|
   config.log = false
 end
 
-module OvhSavoni end
+module OvhSavoni 
+end
   
 require_relative "./ovh_savoni/error.rb"
 require_relative "./ovh_savoni/response_builder.rb"
