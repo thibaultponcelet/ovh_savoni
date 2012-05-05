@@ -30,11 +30,11 @@ Usage
 -----
 
 **Connection establishment**
-  - For actions with authentications: 
+  * For actions with authentications: 
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password")
-  - For SMS user: 
+  * For SMS user: 
     savoni = OvhSavoni::SoAPI.new(:sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
-  - Both can be specified to have always full access:
+  * Both can be specified to have always full access:
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password", :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
   
 **API access**
@@ -84,6 +84,6 @@ Example: SMS sending:
 
     puts savoni.telephony_sms_user_credit_left
     
-This will send a SMS to two recipient using a sms user from OVH and display credit left before and after sending
+This will send a SMS to two recipient using a sms user from OVH and display credit left before and after sending and the ids of the sended SMS.
 
 
