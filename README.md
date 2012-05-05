@@ -34,6 +34,7 @@ Usage
 -----
 
 **Connection establishment**
+
   For actions with authentications: 
   
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password")
@@ -47,6 +48,7 @@ Usage
     savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password", :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
   
 **API access**
+
   OvhSavoni::SoAPI instances have one method for each SOAP action defined by OVH
   parameters have to be passed has one hash argument:
   - savoni.action_name(:param1=>"val1", :param2=>"val2",...)
@@ -55,6 +57,7 @@ Usage
   Results are Struct mapped on the returned XML for comppound values and basic values for simple return values such as String, Dates,...
   
 **Change the WSDL**
+
 The WSDL included in the gem should be the most recent one but if you want to 
 use an other (older/newer) WSDL file you can do it simply by putting:
   - OvhSavoni::SoAPI.wsdl_path="wsdl_path" 
