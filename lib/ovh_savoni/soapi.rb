@@ -1,10 +1,12 @@
 class OvhSavoni::SoAPI
-  # Store WDSL path and soap client as class instance methods
-  @wsdl_path = File.expand_path("../../soapi-re-1.35.wsdl" , __FILE__)
   # Provide class accessors
-  class << self; attr_accessor :wsdl_path,:soap; end
+  class << self
+    attr_accessor :wsdl_path, :soap
+  end
   # Initialize soap connection
   @soap = Savon::Client.new{ wsdl.document = OvhSavoni::SoAPI.wsdl_path }
+  # Store WDSL path and soap client as class instance variable
+  @wsdl_path = File.expand_path("../../soapi-re-1.35.wsdl" , __FILE__)
   
   # Initialize the class structure on the basis of the WSDL file
   # Meta definition of one method for each action
@@ -19,7 +21,6 @@ class OvhSavoni::SoAPI
       rescue Savon::SOAP::Fault => e
         raise OvhSavoni::Error.new(e.message)
       end
-      
       OvhSavoni::ResponseBuilder.build(r,action)
     end
   end
@@ -31,6 +32,7 @@ class OvhSavoni::SoAPI
     @sms_account = logins[:sms_account]
     @sms_user = logins[:sms_user]
     @sms_password= logins[:sms_password]
+    #Connect if login infos provided
     if @nichandle && @password
       @session = self.login(:nic=>@nichandle,:password=>@password,:lang=>lang.to_s)
     end
@@ -41,7 +43,6 @@ class OvhSavoni::SoAPI
   def request(method, params,second=false)
     begin
       opts = set_opts(method,params,second)
-      
       params.each do |k, v| 
         opts[k] = v 
         if v.is_a?(Array)
@@ -67,7 +68,7 @@ class OvhSavoni::SoAPI
   # Set default ops with ones defined at instanciation
   def set_opts(method,params,wrong_order=false)
     opts={}
-    if !@session.nil?
+    if params[:session].nil? && !@session.nil?
       opts[:session] = @session 
     end
     if params[:sms_account].nil? && !@sms_account.nil? && sms_request(method) 
@@ -77,7 +78,7 @@ class OvhSavoni::SoAPI
       if params[:login].nil? && !@sms_user.nil?
         opts[:login] = @sms_user 
       end
-      if params[:password].nil? && !@sms_password.nil? && sms_user_request(method)
+      if params[:password].nil? && !@sms_password.nil?
         opts[:password] = @sms_password 
       end
       # Monkey patch to handle different order of parameters in smsUser methods
