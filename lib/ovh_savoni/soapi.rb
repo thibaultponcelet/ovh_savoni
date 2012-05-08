@@ -3,10 +3,11 @@ class OvhSavoni::SoAPI
   class << self
     attr_accessor :wsdl_path, :soap
   end
-  # Initialize soap connection
-  @soap = Savon::Client.new{ wsdl.document = OvhSavoni::SoAPI.wsdl_path }
   # Store WDSL path and soap client as class instance variable
   @wsdl_path = File.expand_path("../../soapi-re-1.35.wsdl" , __FILE__)
+  # Initialize soap connection
+  @soap = Savon::Client.new{ wsdl.document = OvhSavoni::SoAPI.wsdl_path }
+
   
   # Initialize the class structure on the basis of the WSDL file
   # Meta definition of one method for each action
