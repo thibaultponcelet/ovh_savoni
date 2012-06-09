@@ -2,7 +2,7 @@
 
 <!--
     
-    SOAPI WSDL, RPC/Encoded style, version 1.35
+    SOAPI WSDL, RPC/Encoded style, version 1.36
 
     The SOAPI technical specifications are available at this url : http://www.ovh.com/soapi .
 
@@ -469,6 +469,7 @@
           <xsd:element name="fromEmail" type="xsd:string"/>
           <xsd:element name="fromName" type="xsd:string"/>
           <xsd:element name="forcePassword" type="xsd:boolean"/>
+          <xsd:element name="doNotRecord" type="xsd:boolean"/>
         </xsd:all>
       </xsd:complexType>
 
@@ -644,6 +645,8 @@
           <xsd:element name="text" type="xsd:string"/>
           <xsd:element name="user" type="xsd:string"/>
           <xsd:element name="tag" type="xsd:string"/>
+          <xsd:element name="pttDescription" type="xsd:string"/>
+          <xsd:element name="deliveryReceiptDescription" type="xsd:string"/>
         </xsd:all>
       </xsd:complexType>
 
@@ -712,9 +715,14 @@
           <xsd:element name="displayMarketingDirectory" type="xsd:string"/>
           <xsd:element name="displaySearchReverse" type="xsd:string"/>
           <xsd:element name="receivePJDirectory" type="xsd:string"/>
-          <xsd:element name="inseeCode" type="xsd:string"/>
+          <xsd:element name="inseeCode" type="xsd:int"/>
           <xsd:element name="codePJ" type="xsd:string"/>
           <xsd:element name="labelPJ" type="xsd:string"/>
+          <xsd:element name="modificationType" type="xsd:string"/>
+          <xsd:element name="modificationDate" type="xsd:string"/>
+          <xsd:element name="status" type="xsd:string"/>
+          <xsd:element name="status_pagesjaunes" type="xsd:string"/>
+          <xsd:element name="status_118712" type="xsd:string"/>
         </xsd:all>
       </xsd:complexType>
 
@@ -4808,6 +4816,7 @@
     <wsdl:part name="fromEmail" type="xsd:string" />
     <wsdl:part name="fromName" type="xsd:string" />
     <wsdl:part name="doNotRecord" type="xsd:boolean" />
+    <wsdl:part name="forcePassword" type="xsd:boolean" />
   </wsdl:message>
 
   <wsdl:message name="telephonyVoicemailOptionsModifyResponse" />
@@ -9997,6 +10006,7 @@
     <wsdl:part name="forwardUnconditionalNumber" type="xsd:string" />
     <wsdl:part name="mainVoicemail" type="xsd:string" />
     <wsdl:part name="forwardPolicyIndex" type="xsd:string" />
+    <wsdl:part name="timeout" type="xsd:int" />
   </wsdl:message>
 
   <wsdl:message name="telephonyHuntingGenericScreenOptionsModifyResponse" />

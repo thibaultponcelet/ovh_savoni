@@ -1,6 +1,6 @@
 require "../lib/ovh_savoni"
 
-savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****" 
+savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****"
 
 puts savoni.telephony_sms_user_credit_left
 ids = savoni.telephony_sms_user_multi_send(
@@ -11,8 +11,3 @@ ids = savoni.telephony_sms_user_multi_send(
 puts ids
 
 puts savoni.telephony_sms_user_credit_left
-
-
-
-
-
