@@ -17,8 +17,8 @@ Or add it to your Gemfile:
         gem 'ovh_savoni', 'x.x.x'
 
 
-Version
----
+### Version
+
 
 Be carefull that methods will change with versions to follow the updates done by OVH in their WSDL file.
 Version number of this gem match the WSDL version of OVH (see the changelog here: http://www.ovh.com/soapi/fr/changelog.xml).
