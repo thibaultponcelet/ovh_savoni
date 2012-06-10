@@ -27,8 +27,8 @@ An additional version number will be added if required by the gem.
 ## Example
 
 
-SMS sending
----
+### SMS sending
+
 
         require "ovh_savoni"
         savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****"
@@ -38,8 +38,8 @@ SMS sending
 
 This will display the credit left, send a SMS to two recipients using a sms user from OVH and display the returned ids.
 
-Domain info
----
+### Domain info
+
 
         require "ovh_savoni"
 
@@ -59,8 +59,8 @@ Domain info
 
 ## Usage
 
-Connection establishment
----
+### Connection establishment
+
 
   For actions with authentications:
 
@@ -79,8 +79,8 @@ Connection establishment
         savoni = OvhSavoni::SoAPI.new
 
 
-API access
----
+### API access
+
 
   OvhSavoni::SoAPI instances define one method for each SOAP action defined by OVH
   parameters have to be passed in the same order than the one defined at http://www.ovh.com/soapi/en/ (optional parameters can be omited)

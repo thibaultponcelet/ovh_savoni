@@ -1,30 +1,34 @@
 ovh_savoni
-===========
+===
 OVH SoAPI wrapper.
 
 Super easy access to the OVH Soap API for Ruby >1.9, with extra support for SMS handling.
 
 Please refer to http://www.ovh.com/soapi/en/ for the API definition.
 
-Install
--------
+##Install
+
 Install it on your system:
 
-    gem install ovh_savoni
+        gem install ovh_savoni
 
 Or add it to your Gemfile:
 
-    gem 'ovh_savoni', 'x.x.x'
+        gem 'ovh_savoni', 'x.x.x'
 
 
-**Version**
+Version
+---
 
 Be carefull that methods will change with versions to follow the updates done by OVH in their WSDL file.
 Version number of this gem match the WSDL version of OVH (see the changelog here: http://www.ovh.com/soapi/fr/changelog.xml).
 An additional version number will be added if required by the gem.
 
-Example: SMS sending
-------------
+## Example
+
+
+SMS sending
+---
 
         require "ovh_savoni"
         savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****"
@@ -34,8 +38,8 @@ Example: SMS sending
 
 This will display the credit left, send a SMS to two recipients using a sms user from OVH and display the returned ids.
 
-Example: Domain info
--------
+Domain info
+---
 
         require "ovh_savoni"
 
@@ -53,10 +57,10 @@ Example: Domain info
   - authinfo
   - creation
 
-Usage
------
+## Usage
 
-**Connection establishment**
+Connection establishment
+---
 
   For actions with authentications:
 
@@ -75,7 +79,8 @@ Usage
         savoni = OvhSavoni::SoAPI.new
 
 
-**API access**
+API access
+---
 
   OvhSavoni::SoAPI instances define one method for each SOAP action defined by OVH
   parameters have to be passed in the same order than the one defined at http://www.ovh.com/soapi/en/ (optional parameters can be omited)
@@ -89,20 +94,19 @@ Usage
 
   Results are sub-classes of Struct mapped on the returned XML for comppound values and basic values for simple return values such as String, Dates,etc
 
-Contributions
---------------
+## Contributions
+
 If you want to contribute, please open an issue or:
 
   * Fork the project.
   * Make your feature addition or bug fix.
   * Send a pull request on Github with a clear description.
 
-TODO
--------
+## TODO
 
   * Tests
   * Check methods arity
 
-Copyright
----------
+## Copyright
+
 Copyright 2011-2012 Thibault Poncelet - See LICENCE for details.
