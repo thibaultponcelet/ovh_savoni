@@ -1,5 +1,5 @@
 require "../lib/ovh_savoni"
 
-savoni = OvhSavoni::SoAPI.new(:nichandle=>"XXXXXX",:password=>"*******")
-result = savoni.domain_info(:domain=>"example.com")
-puts result.members # the domain creation date
+savoni = OvhSavoni::SoAPI.new(:nichandle=>"****-ovh",:password=>"*****")
+result = savoni.domain_info("example.com")
+puts result.members

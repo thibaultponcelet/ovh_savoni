@@ -1,27 +1,19 @@
 ovh_savoni
 ===========
 OVH SoAPI wrapper.
-Provide super easy access to the OVH Soap API for Ruby >1.9 on top of savon.
+Super easy access to the OVH Soap API for Ruby >1.9, with extra support for SMS handling.
 
-Please refer to http://www.ovh.com/soapi/en/ for API definition.
-
-This gem gives you access to the whole OVH SOAP API with extra support for SMS handling.
+Please refer to http://www.ovh.com/soapi/en/ for the API definition.
 
 Install
 -------
-Add it to your Gemfile (dev version):
+Install it on your system:
 
-    gem "ovh_savoni", :git => "git://github.com/thibaultponcelet/ovh_savoni.git"
+    gem install ovh_savoni
 
-Comming soon:
+Or add it to your Gemfile:
 
-  Install it on your system:
-
-      gem install ovh_savoni
-
-  Or add it to your Gemfile:
-
-      gem 'ovh_savoni', 'x.x.x'
+    gem 'ovh_savoni', 'x.x.x'
 
 
 **Version**
@@ -32,25 +24,21 @@ An additional version number will be added if required by the gem.
 Example: SMS sending
 ------------
 
-    require "ovh_savoni"
-    savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****"
+        require "ovh_savoni"
+        savoni = OvhSavoni::SoAPI.new :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****"
 
-    puts savoni.telephony_sms_user_credit_left
-    puts savoni.telephony_sms_user_multi_send(
-      :number_from=>"+320000000",
-      :number_to=>["+321111111","+32111111"],
-      :message=>"SMS CONTENT"
-    )
+        puts savoni.telephony_sms_user_credit_left
+        puts savoni.telephony_sms_user_multi_send("+320000000",["+321111111","+32111111"],"SMS content")
 
-This will display the credit left, send a SMS to two recipient using a sms user from OVH and display the ids of the sended SMS.
+This will display the credit left, send a SMS to two recipients using a sms user from OVH and display the returned ids.
 
 Example: Domain info
 -------
 
-    require "ovh_savoni"
+        require "ovh_savoni"
 
-    savoni = OvhSavoni::SoAPI.new(:nichandle=>"nichandle",:password=>"password")
-    result = savoni.domain_info(:domain=>"example.com")
+        savoni = OvhSavoni::SoAPI.new(:nichandle=>"******",:password=>"******")
+        result = savoni.domain_info("example.com")
 
 'result' is now a Struct with accessors for all response elements defined by OVH. In this case:
   - dns
@@ -63,9 +51,6 @@ Example: Domain info
   - authinfo
   - creation
 
-
-
-
 Usage
 -----
 
@@ -73,31 +58,48 @@ Usage
 
   For actions with authentications:
 
-    savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password")
+        savoni = OvhSavoni::SoAPI.new(:nickhandle=>"******",:password=>"******")
 
   For SMS user:
 
-    savoni = OvhSavoni::SoAPI.new(:sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
+        savoni = OvhSavoni::SoAPI.new(:sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
 
   Both can be specified if needed to have always full access:
 
-    savoni = OvhSavoni::SoAPI.new(:nickhandle=>"nichandle",:password=>"password", :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
+        savoni = OvhSavoni::SoAPI.new(:nickhandle=>"******",:password=>"password", :sms_user=>"*****",:sms_password=>"*****",:sms_account=>"*****")
+
+  In case you do not want the gem to handle the authentification for you just create a new instance without parameters:
+  (This mean that you will have to perfom a login call explicitely and pass the result with each action that requires authentication.)
+        savoni = OvhSavoni::SoAPI.new
+
 
 **API access**
 
-  OvhSavoni::SoAPI instances have one method for each SOAP action defined by OVH
-  parameters have to be passed has one hash argument:
-  - savoni.action_name(:param1=>"val1", :param2=>"val2",...)
-  N.B. The actions are to be in snake case in order to follow Ruby convention.
+  OvhSavoni::SoAPI instances define one method for each SOAP action defined by OVH
+  parameters have to be passed in the same order than the one defined at http://www.ovh.com/soapi/en/ (optional parameters can be omited)
+  - savoni.action_name(arg1,arg2,arg3)
 
-  Results are sub-classes of Struct mapped on the returned XML for comppound values and basic values for simple return values such as String, Dates,...
+  The *session* parameter must be skipped when the SoAPI instance has been initialized with the nichandle and passowrd parameters
 
-**Change the WSDL**
+  The *sms_account*, *sms_user*, *sms_password* parameters for sms users methods must also be skipped when setted at initialization.
 
-The WSDL included in the gem is the most recent one but if you want to
-use an other (older) WSDL file you can do it simply by putting:
-  - OvhSavoni::SoAPI.wsdl_path="wsdl_path"
-in your configuration file.
+  N.B. The actions are to be in snake case in order to follow Ruby conventions.
+
+  Results are sub-classes of Struct mapped on the returned XML for comppound values and basic values for simple return values such as String, Dates,etc
+
+Contributions
+--------------
+If you want to contribute, please open an issue or:
+
+  * Fork the project.
+  * Make your feature addition or bug fix.
+  * Send a pull request on Github with a clear description.
+
+TODO
+-------
+
+  * Tests
+  * Check methods arity
 
 Copyright
 ---------

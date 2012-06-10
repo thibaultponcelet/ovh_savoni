@@ -5,7 +5,7 @@ require "ovh_savoni/version"
 Gem::Specification.new do |s|
    s.name = "ovh_savoni"
    s.summary = "OVH SoAPI wrapper"
-   s.description = "Super easy access to the OVH SoAPI on top of savon for Ruby 1.9"
+   s.description = "Super easy access to OVH SoAPI on top of savon for Ruby 1.9"
    s.version = OvhSavoni::VERSION
    s.authors = "Thibault Poncelet"
    s.email = "thibaultponcelet@gmail.com"
@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
    s.test_files  = Dir.glob("spec/**/*.rb")
    s.homepage    = "https://github.com/thibaultponcelet/ovh_savoni"
    s.add_development_dependency 'rspec', '~> 2.5'
-   s.add_dependency 'savon', '~>0.9.9'
+   s.add_dependency 'savon', '~> 1.0.0'
 end
