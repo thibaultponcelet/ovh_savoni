@@ -76,6 +76,7 @@ This will display the credit left, send a SMS to two recipients using a sms user
 
   In case you do not want the gem to handle the authentification for you just create a new instance without parameters:
   (This mean that you will have to perfom a login call explicitely and pass the result with each action that requires authentication.)
+
         savoni = OvhSavoni::SoAPI.new
 
 
@@ -84,7 +85,7 @@ This will display the credit left, send a SMS to two recipients using a sms user
 
   OvhSavoni::SoAPI instances define one method for each SOAP action defined by OVH
   parameters have to be passed in the same order than the one defined at http://www.ovh.com/soapi/en/ (optional parameters can be omited)
-  - savoni.action_name(arg1,arg2,arg3)
+        savoni.action_name(arg1,arg2,arg3)
 
   The *session* parameter must be skipped when the SoAPI instance has been initialized with the *nichandle* and *passowrd* parameters
 
