@@ -1,6 +1,7 @@
 ovh_savoni
 ===========
 OVH SoAPI wrapper.
+
 Super easy access to the OVH Soap API for Ruby >1.9, with extra support for SMS handling.
 
 Please refer to http://www.ovh.com/soapi/en/ for the API definition.
@@ -17,6 +18,7 @@ Or add it to your Gemfile:
 
 
 **Version**
+
 Be carefull that methods will change with versions to follow the updates done by OVH in their WSDL file.
 Version number of this gem match the WSDL version of OVH (see the changelog here: http://www.ovh.com/soapi/fr/changelog.xml).
 An additional version number will be added if required by the gem.
@@ -79,7 +81,7 @@ Usage
   parameters have to be passed in the same order than the one defined at http://www.ovh.com/soapi/en/ (optional parameters can be omited)
   - savoni.action_name(arg1,arg2,arg3)
 
-  The *session* parameter must be skipped when the SoAPI instance has been initialized with the nichandle and passowrd parameters
+  The *session* parameter must be skipped when the SoAPI instance has been initialized with the *nichandle* and *passowrd* parameters
 
   The *sms_account*, *sms_user*, *sms_password* parameters for sms users methods must also be skipped when setted at initialization.
 
