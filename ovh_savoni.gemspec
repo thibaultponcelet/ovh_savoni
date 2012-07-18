@@ -16,5 +16,6 @@ Gem::Specification.new do |s|
    s.test_files  = Dir.glob("spec/**/*.rb")
    s.homepage    = "https://github.com/thibaultponcelet/ovh_savoni"
    s.add_development_dependency 'rspec', '~> 2.5'
-   s.add_dependency 'savon', '1.0.0'
+   s.add_dependency 'savon', '1.1.0'
+   s.add_dependency 'httpclient', '~> 2.2.5'
 end
