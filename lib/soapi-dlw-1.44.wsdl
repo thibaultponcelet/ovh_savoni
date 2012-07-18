@@ -2,7 +2,7 @@
 
 <!--
     
-    SOAPI WSDL, Document/Literal wrapped style, version 1.36
+    SOAPI WSDL, Document/Literal wrapped style, version 1.44
 
     The SOAPI technical specifications are available at this url : http://www.ovh.com/soapi .
 
@@ -504,6 +504,23 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyPhonebookOnSmsList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:MyArrayOfTelephonyPhonebookStructType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="serviceGroupList">
         <xsd:complexType>
           <xsd:sequence>
@@ -637,6 +654,7 @@
             <xsd:element name="smsCoding" type="xsd:int" nillable="true" />
             <xsd:element name="tag" type="xsd:string" nillable="true" />
             <xsd:element name="numberToCsv" type="xsd:string" nillable="true" />
+            <xsd:element name="noStop" type="xsd:boolean" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -1073,6 +1091,24 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyPhonebookOnSmsAdd">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="name" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsAddResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="telephonyClick2CallUserDel">
         <xsd:complexType>
           <xsd:sequence>
@@ -1126,6 +1162,7 @@
       <xsd:element name="telephonyBillingAccountConsumptionCSVByMail">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="billingAccount" type="xsd:string" nillable="true" />
             <xsd:element name="date" type="xsd:string" nillable="true" />
           </xsd:sequence>
@@ -1258,6 +1295,7 @@
             <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="billingAccount" type="xsd:string" nillable="true" />
             <xsd:element name="date" type="xsd:string" nillable="true" />
+            <xsd:element name="received" type="xsd:boolean" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -1775,7 +1813,7 @@
             <xsd:element name="redirection4Email" type="xsd:string" nillable="true" />
             <xsd:element name="redirection5" type="xsd:string" nillable="true" />
             <xsd:element name="redirection5Email" type="xsd:string" nillable="true" />
-            <xsd:element name="annouceMessage" type="xsd:string" nillable="true" />
+            <xsd:element name="announceMessage" type="xsd:string" nillable="true" />
             <xsd:element name="keepMessage" type="xsd:boolean" nillable="true" />
             <xsd:element name="audioformat" type="xsd:string" nillable="true" />
             <xsd:element name="fromEmail" type="xsd:string" nillable="true" />
@@ -1882,6 +1920,7 @@
       <xsd:element name="telephonySmsAddCsvAttachment">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
             <xsd:element name="csvUrl" type="xsd:string" nillable="true" />
             <xsd:element name="id" type="xsd:string" nillable="true" />
@@ -2285,6 +2324,7 @@
             <xsd:element name="smsCoding" type="xsd:int" nillable="true" />
             <xsd:element name="tag" type="xsd:string" nillable="true" />
             <xsd:element name="numberToCsv" type="xsd:string" nillable="true" />
+            <xsd:element name="noStop" type="xsd:boolean" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -2300,6 +2340,7 @@
       <xsd:element name="telephonySmsGetCsvAttachment">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
             <xsd:element name="id" type="xsd:string" nillable="true" />
           </xsd:sequence>
@@ -2743,6 +2784,24 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyLineGetIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineGetIpRestrictionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:MyArrayOfStringType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="dedicatedInstallationTemplateList">
         <xsd:complexType>
           <xsd:sequence>
@@ -2834,6 +2893,7 @@
       <xsd:element name="telephonyRatesList">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="countryCode" type="xsd:string" nillable="true" />
             <xsd:element name="type" type="xsd:string" nillable="true" />
           </xsd:sequence>
@@ -3329,6 +3389,22 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="return" type="typens:MyArrayOfDedicatedFailoverRipeStructType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicGetMgcpIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicGetMgcpIpRestrictionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:MyArrayOfStringType" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -3891,6 +3967,22 @@
       </xsd:element>
 
       <xsd:element name="telephonyConferenceRoomModifyResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsDel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsDelResponse">
         <xsd:complexType>
             <xsd:sequence />
         </xsd:complexType>
@@ -4589,6 +4681,38 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyNicGetIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicGetIpRestrictionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:MyArrayOfStringType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactDel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactDelResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="telephonyReversmentsRefundIsPending">
         <xsd:complexType>
           <xsd:sequence>
@@ -4631,6 +4755,7 @@
             <xsd:element name="country" type="xsd:string" nillable="true" />
             <xsd:element name="screenListType" type="xsd:string" nillable="true" />
             <xsd:element name="numbersScreen" type="typens:MyArrayOfStringType" nillable="true" />
+            <xsd:element name="naturesScreen" type="typens:MyArrayOfStringType" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -4778,6 +4903,27 @@
       <xsd:element name="telephonyHuntingGenericScreenStatusModifyResponse">
         <xsd:complexType>
             <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonySmsBlacklistedSendersList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="pagingStart" type="xsd:int" nillable="true" />
+            <xsd:element name="pagingLimit" type="xsd:int" nillable="true" />
+            <xsd:element name="sortField" type="xsd:string" nillable="true" />
+            <xsd:element name="sortOrder" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonySmsBlacklistedSendersListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:telephonySmsBlacklistedSendersListReturn" />
+          </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
 
@@ -5720,6 +5866,21 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyNicSetMgcpIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="ips" type="typens:MyArrayOfStringType" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicSetMgcpIpRestrictionResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="telephonySecurityDepositCredit">
         <xsd:complexType>
           <xsd:sequence>
@@ -6312,6 +6473,29 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyPhonebookOnSmsContactModify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+            <xsd:element name="name" type="xsd:string" nillable="true" />
+            <xsd:element name="surname" type="xsd:string" nillable="true" />
+            <xsd:element name="workPhone" type="xsd:string" nillable="true" />
+            <xsd:element name="workMobile" type="xsd:string" nillable="true" />
+            <xsd:element name="homePhone" type="xsd:string" nillable="true" />
+            <xsd:element name="homeMobile" type="xsd:string" nillable="true" />
+            <xsd:element name="groupName" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactModifyResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="dedicatedCapabilitiesGet">
         <xsd:complexType>
           <xsd:sequence>
@@ -6326,6 +6510,23 @@
           <xsd:sequence>
             <xsd:element name="return" type="typens:dedicatedCapabilitiesStruct" />
           </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsModify">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+            <xsd:element name="name" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsModifyResponse">
+        <xsd:complexType>
+            <xsd:sequence />
         </xsd:complexType>
       </xsd:element>
 
@@ -6678,6 +6879,7 @@
       <xsd:element name="telephonySmsDeleteCsvAttachment">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
             <xsd:element name="ids" type="typens:MyArrayOfIntType" nillable="true" />
           </xsd:sequence>
@@ -6927,6 +7129,21 @@
       </xsd:element>
 
       <xsd:element name="sqlpriveAlertSetResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicSetIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="ips" type="typens:MyArrayOfStringType" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyNicSetIpRestrictionResponse">
         <xsd:complexType>
             <xsd:sequence />
         </xsd:complexType>
@@ -7272,6 +7489,7 @@
       <xsd:element name="telephonySmsListCsvAttachment">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
             <xsd:element name="id" type="xsd:string" nillable="true" />
           </xsd:sequence>
@@ -7468,6 +7686,24 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="return" type="typens:MyArrayOfTelephonyLineLogsStructType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineGetMgcpIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineGetMgcpIpRestrictionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:string" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -7694,6 +7930,7 @@
       <xsd:element name="telephonyRatesListCsv">
         <xsd:complexType>
           <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="countryCode" type="xsd:string" nillable="true" />
             <xsd:element name="type" type="xsd:string" nillable="true" />
           </xsd:sequence>
@@ -7833,6 +8070,25 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyPhonebookOnSmsContactList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+            <xsd:element name="groupName" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:MyArrayOfTelephonyPhonebookContactStructType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="nicCreateIT">
         <xsd:complexType>
           <xsd:sequence>
@@ -7869,6 +8125,31 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="return" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactAdd">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="id" type="xsd:int" nillable="true" />
+            <xsd:element name="name" type="xsd:string" nillable="true" />
+            <xsd:element name="surname" type="xsd:string" nillable="true" />
+            <xsd:element name="workPhone" type="xsd:string" nillable="true" />
+            <xsd:element name="workMobile" type="xsd:string" nillable="true" />
+            <xsd:element name="homePhone" type="xsd:string" nillable="true" />
+            <xsd:element name="homeMobile" type="xsd:string" nillable="true" />
+            <xsd:element name="groupName" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyPhonebookOnSmsContactAddResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:int" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -8037,6 +8318,7 @@
             <xsd:element name="smsPriority" type="xsd:int" nillable="true" />
             <xsd:element name="smsCoding" type="xsd:int" nillable="true" />
             <xsd:element name="tag" type="xsd:string" nillable="true" />
+            <xsd:element name="noStop" type="xsd:boolean" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -8229,6 +8511,23 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyLineSetMgcpIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+            <xsd:element name="ips" type="typens:MyArrayOfStringType" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineSetMgcpIpRestrictionResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="dedicatedInstallReset">
         <xsd:complexType>
           <xsd:sequence>
@@ -8400,6 +8699,22 @@
         </xsd:complexType>
       </xsd:element>
 
+      <xsd:element name="telephonyAbbreviatedNumberOnGroupDel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="group" type="xsd:string" nillable="true" />
+            <xsd:element name="abbreviatedNumber" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyAbbreviatedNumberOnGroupDelResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
       <xsd:element name="crontabAdd">
         <xsd:complexType>
           <xsd:sequence>
@@ -8442,22 +8757,6 @@
         </xsd:complexType>
       </xsd:element>
 
-      <xsd:element name="telephonyAbbreviatedNumberOnGroupDel">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="session" type="xsd:string" nillable="true" />
-            <xsd:element name="group" type="xsd:string" nillable="true" />
-            <xsd:element name="abbreviatedNumber" type="xsd:string" nillable="true" />
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-
-      <xsd:element name="telephonyAbbreviatedNumberOnGroupDelResponse">
-        <xsd:complexType>
-            <xsd:sequence />
-        </xsd:complexType>
-      </xsd:element>
-
       <xsd:element name="mailingListModify">
         <xsd:complexType>
           <xsd:sequence>
@@ -8493,6 +8792,28 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="return" type="typens:MyArrayOfManagedServicesPartitionStructType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyAbbreviatedNumberListPaginated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+            <xsd:element name="pagingStart" type="xsd:int" nillable="true" />
+            <xsd:element name="pagingLimit" type="xsd:int" nillable="true" />
+            <xsd:element name="sortField" type="xsd:string" nillable="true" />
+            <xsd:element name="sortOrder" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyAbbreviatedNumberListPaginatedResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="typens:telephonyAbbreviatedNumberListPaginatedReturn" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -8688,6 +9009,7 @@
             <xsd:element name="smsPriority" type="xsd:int" nillable="true" />
             <xsd:element name="smsCoding" type="xsd:int" nillable="true" />
             <xsd:element name="tag" type="xsd:string" nillable="true" />
+            <xsd:element name="noStop" type="xsd:boolean" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -9075,8 +9397,6 @@
         <xsd:complexType>
           <xsd:sequence>
             <xsd:element name="session" type="xsd:string" nillable="true" />
-            <xsd:element name="ape" type="xsd:string" nillable="true" />
-            <xsd:element name="PJCode" type="xsd:string" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -9393,23 +9713,6 @@
         </xsd:complexType>
       </xsd:element>
 
-      <xsd:element name="prepaidGetThreshold">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="session" type="xsd:string" nillable="true" />
-            <xsd:element name="nic" type="xsd:string" nillable="true" />
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-
-      <xsd:element name="prepaidGetThresholdResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="return" type="xsd:int" />
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-
       <xsd:element name="telephonyAbbreviatedNumberAdd">
         <xsd:complexType>
           <xsd:sequence>
@@ -9427,6 +9730,23 @@
       <xsd:element name="telephonyAbbreviatedNumberAddResponse">
         <xsd:complexType>
             <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="prepaidGetThreshold">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="nic" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="prepaidGetThresholdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="xsd:int" />
+          </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
 
@@ -9505,6 +9825,23 @@
           <xsd:sequence>
             <xsd:element name="return" type="typens:telephonyNumberOrderReturn" />
           </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineSetIpRestriction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+            <xsd:element name="ips" type="typens:MyArrayOfStringType" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyLineSetIpRestrictionResponse">
+        <xsd:complexType>
+            <xsd:sequence />
         </xsd:complexType>
       </xsd:element>
 
@@ -9651,6 +9988,25 @@
       </xsd:element>
 
       <xsd:element name="popAttachMasterNicResponse">
+        <xsd:complexType>
+            <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyVoicemailMessagesRemoteUpload">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="country" type="xsd:string" nillable="true" />
+            <xsd:element name="messType" type="xsd:string" nillable="true" />
+            <xsd:element name="filename" type="xsd:string" nillable="true" />
+            <xsd:element name="url" type="xsd:string" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonyVoicemailMessagesRemoteUploadResponse">
         <xsd:complexType>
             <xsd:sequence />
         </xsd:complexType>
@@ -10386,6 +10742,7 @@
             <xsd:element name="session" type="xsd:string" nillable="true" />
             <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
             <xsd:element name="number" type="xsd:string" nillable="true" />
+            <xsd:element name="reason" type="xsd:string" nillable="true" />
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -10763,6 +11120,22 @@
           <xsd:sequence>
             <xsd:element name="return" type="typens:MyArrayOfStringType" />
           </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonySmsBlacklistedSendersDelete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="session" type="xsd:string" nillable="true" />
+            <xsd:element name="smsAccount" type="xsd:string" nillable="true" />
+            <xsd:element name="ids" type="typens:MyArrayOfIntType" nillable="true" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="telephonySmsBlacklistedSendersDeleteResponse">
+        <xsd:complexType>
+            <xsd:sequence />
         </xsd:complexType>
       </xsd:element>
 
@@ -11793,6 +12166,7 @@
           <xsd:element name="tag" type="xsd:string"/>
           <xsd:element name="pttDescription" type="xsd:string"/>
           <xsd:element name="deliveryReceiptDescription" type="xsd:string"/>
+          <xsd:element name="pttDescriptionDetail" type="xsd:string"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -11872,11 +12246,22 @@
         </xsd:sequence>
       </xsd:complexType>
 
+      <xsd:complexType name="telephonyAvailableFunctionStruct">
+        <xsd:sequence>
+          <xsd:element name="function" type="xsd:string"/>
+          <xsd:element name="relatedValue" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
       <xsd:complexType name="telephonyFunctionKeyStruct">
         <xsd:sequence>
           <xsd:element name="keyNum" type="xsd:int"/>
           <xsd:element name="function" type="xsd:string"/>
           <xsd:element name="relatedNumber" type="xsd:string"/>
+          <xsd:element name="label" type="xsd:string"/>
+          <xsd:element name="default" type="xsd:string"/>
+          <xsd:element name="type" type="xsd:string"/>
+          <xsd:element name="functionList" type="typens:MyArrayOfTelephonyAvailableFunctionStructType"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -11933,6 +12318,13 @@
         <xsd:sequence>
           <xsd:element name="recipient" type="xsd:string"/>
           <xsd:element name="status" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="telephonyAbbreviatedNumberListPaginatedReturn">
+        <xsd:sequence>
+          <xsd:element name="totalRecords" type="xsd:int"/>
+          <xsd:element name="list" type="typens:MyArrayOfTelephonyAbbreviatedNumberStructType"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -12061,6 +12453,7 @@
         <xsd:sequence>
           <xsd:element name="status" type="xsd:string"/>
           <xsd:element name="numberScreen" type="xsd:string"/>
+          <xsd:element name="natureScreen" type="xsd:string"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -12153,6 +12546,21 @@
           <xsd:element name="countrySuffixe" type="xsd:string"/>
           <xsd:element name="price" type="xsd:float"/>
           <xsd:element name="type" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="telephonySmsBlacklistedSenderStruct">
+        <xsd:sequence>
+          <xsd:element name="id" type="xsd:int"/>
+          <xsd:element name="date" type="xsd:string"/>
+          <xsd:element name="number" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:complexType name="telephonySmsBlacklistedSendersListReturn">
+        <xsd:sequence>
+          <xsd:element name="totalRecords" type="xsd:int"/>
+          <xsd:element name="list" type="typens:MyArrayOfTelephonySmsBlacklistedSenderStructType"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -12436,6 +12844,13 @@
         </xsd:sequence>
       </xsd:complexType>
 
+      <xsd:element name="MyArrayOfTelephonyAvailableFunctionStruct" type="typens:MyArrayOfTelephonyAvailableFunctionStructType" />
+      <xsd:complexType name="MyArrayOfTelephonyAvailableFunctionStructType">
+        <xsd:sequence>
+          <xsd:element name="item" type="typens:telephonyAvailableFunctionStruct" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
       <xsd:element name="MyArrayOfTelephonyRecipientStruct" type="typens:MyArrayOfTelephonyRecipientStructType" />
       <xsd:complexType name="MyArrayOfTelephonyRecipientStructType">
         <xsd:sequence>
@@ -12461,6 +12876,13 @@
       <xsd:complexType name="MyArrayOfTelephonyLineLogsListStructType">
         <xsd:sequence>
           <xsd:element name="item" type="typens:telephonyLineLogsListStruct" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+
+      <xsd:element name="MyArrayOfTelephonySmsBlacklistedSenderStruct" type="typens:MyArrayOfTelephonySmsBlacklistedSenderStructType" />
+      <xsd:complexType name="MyArrayOfTelephonySmsBlacklistedSenderStructType">
+        <xsd:sequence>
+          <xsd:element name="item" type="typens:telephonySmsBlacklistedSenderStruct" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
       </xsd:complexType>
 
@@ -15043,6 +15465,14 @@
     <wsdl:part name="parameters" element="typens:dedicatedBackupUpdateResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyPhonebookOnSmsListRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsList" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsListResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsListResponse" />
+  </wsdl:message>
+
   <wsdl:message name="serviceGroupListRequest">
     <wsdl:part name="parameters" element="typens:serviceGroupList" />
   </wsdl:message>
@@ -15289,6 +15719,14 @@
 
   <wsdl:message name="automatedMailGetErrorsResponse">
     <wsdl:part name="parameters" element="typens:automatedMailGetErrorsResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsAddRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsAdd" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsAddResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsAddResponse" />
   </wsdl:message>
 
   <wsdl:message name="telephonyClick2CallUserDelRequest">
@@ -16011,6 +16449,14 @@
     <wsdl:part name="parameters" element="typens:telephonyLineLogsNotificationOptionsResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyLineGetIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyLineGetIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyLineGetIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyLineGetIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="dedicatedInstallationTemplateListRequest">
     <wsdl:part name="parameters" element="typens:dedicatedInstallationTemplateList" />
   </wsdl:message>
@@ -16275,6 +16721,14 @@
     <wsdl:part name="parameters" element="typens:dedicatedFailoverRipeListResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyNicGetMgcpIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyNicGetMgcpIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyNicGetMgcpIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyNicGetMgcpIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="telephonySmsGetUserQuotaForUserRequest">
     <wsdl:part name="parameters" element="typens:telephonySmsGetUserQuotaForUser" />
   </wsdl:message>
@@ -16529,6 +16983,14 @@
 
   <wsdl:message name="telephonyConferenceRoomModifyResponse">
     <wsdl:part name="parameters" element="typens:telephonyConferenceRoomModifyResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsDelRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsDel" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsDelResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsDelResponse" />
   </wsdl:message>
 
   <wsdl:message name="telephonyPhonebookShareRequest">
@@ -16835,6 +17297,22 @@
     <wsdl:part name="parameters" element="typens:dedicatedReverseModifyResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyNicGetIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyNicGetIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyNicGetIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyNicGetIpRestrictionResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactDelRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactDel" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactDelResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactDelResponse" />
+  </wsdl:message>
+
   <wsdl:message name="telephonyReversmentsRefundIsPendingRequest">
     <wsdl:part name="parameters" element="typens:telephonyReversmentsRefundIsPending" />
   </wsdl:message>
@@ -16921,6 +17399,14 @@
 
   <wsdl:message name="telephonyHuntingGenericScreenStatusModifyResponse">
     <wsdl:part name="parameters" element="typens:telephonyHuntingGenericScreenStatusModifyResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonySmsBlacklistedSendersListRequest">
+    <wsdl:part name="parameters" element="typens:telephonySmsBlacklistedSendersList" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonySmsBlacklistedSendersListResponse">
+    <wsdl:part name="parameters" element="typens:telephonySmsBlacklistedSendersListResponse" />
   </wsdl:message>
 
   <wsdl:message name="telephonyPhonebookContactAddRequest">
@@ -17299,6 +17785,14 @@
     <wsdl:part name="parameters" element="typens:cmsAvailableListResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyNicSetMgcpIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyNicSetMgcpIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyNicSetMgcpIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyNicSetMgcpIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="telephonySecurityDepositCreditRequest">
     <wsdl:part name="parameters" element="typens:telephonySecurityDepositCredit" />
   </wsdl:message>
@@ -17555,12 +18049,28 @@
     <wsdl:part name="parameters" element="typens:anonymousFtpInfoResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyPhonebookOnSmsContactModifyRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactModify" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactModifyResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactModifyResponse" />
+  </wsdl:message>
+
   <wsdl:message name="dedicatedCapabilitiesGetRequest">
     <wsdl:part name="parameters" element="typens:dedicatedCapabilitiesGet" />
   </wsdl:message>
 
   <wsdl:message name="dedicatedCapabilitiesGetResponse">
     <wsdl:part name="parameters" element="typens:dedicatedCapabilitiesGetResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsModifyRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsModify" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsModifyResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsModifyResponse" />
   </wsdl:message>
 
   <wsdl:message name="cmsListRequest">
@@ -17819,6 +18329,14 @@
     <wsdl:part name="parameters" element="typens:sqlpriveAlertSetResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyNicSetIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyNicSetIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyNicSetIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyNicSetIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="dedicatedBackupIncludeDelRequest">
     <wsdl:part name="parameters" element="typens:dedicatedBackupIncludeDel" />
   </wsdl:message>
@@ -18059,6 +18577,14 @@
     <wsdl:part name="parameters" element="typens:telephonyLineLogsOnGroupResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyLineGetMgcpIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyLineGetMgcpIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyLineGetMgcpIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyLineGetMgcpIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="databaseDeleteRequest">
     <wsdl:part name="parameters" element="typens:databaseDelete" />
   </wsdl:message>
@@ -18211,12 +18737,28 @@
     <wsdl:part name="parameters" element="typens:serviceGroupSetCommentResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyPhonebookOnSmsContactListRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactList" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactListResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactListResponse" />
+  </wsdl:message>
+
   <wsdl:message name="nicCreateITRequest">
     <wsdl:part name="parameters" element="typens:nicCreateIT" />
   </wsdl:message>
 
   <wsdl:message name="nicCreateITResponse">
     <wsdl:part name="parameters" element="typens:nicCreateITResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactAddRequest">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactAdd" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyPhonebookOnSmsContactAddResponse">
+    <wsdl:part name="parameters" element="typens:telephonyPhonebookOnSmsContactAddResponse" />
   </wsdl:message>
 
   <wsdl:message name="dedicatedMonitoringNotificationDelRequest">
@@ -18379,6 +18921,14 @@
     <wsdl:part name="parameters" element="typens:telephonyToneDeleteResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyLineSetMgcpIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyLineSetMgcpIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyLineSetMgcpIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyLineSetMgcpIpRestrictionResponse" />
+  </wsdl:message>
+
   <wsdl:message name="dedicatedInstallResetRequest">
     <wsdl:part name="parameters" element="typens:dedicatedInstallReset" />
   </wsdl:message>
@@ -18451,6 +19001,14 @@
     <wsdl:part name="parameters" element="typens:popModifyDescriptionResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonyAbbreviatedNumberOnGroupDelRequest">
+    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberOnGroupDel" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyAbbreviatedNumberOnGroupDelResponse">
+    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberOnGroupDelResponse" />
+  </wsdl:message>
+
   <wsdl:message name="crontabAddRequest">
     <wsdl:part name="parameters" element="typens:crontabAdd" />
   </wsdl:message>
@@ -18467,14 +19025,6 @@
     <wsdl:part name="parameters" element="typens:telephonySmsSenderDescriptionResponse" />
   </wsdl:message>
 
-  <wsdl:message name="telephonyAbbreviatedNumberOnGroupDelRequest">
-    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberOnGroupDel" />
-  </wsdl:message>
-
-  <wsdl:message name="telephonyAbbreviatedNumberOnGroupDelResponse">
-    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberOnGroupDelResponse" />
-  </wsdl:message>
-
   <wsdl:message name="mailingListModifyRequest">
     <wsdl:part name="parameters" element="typens:mailingListModify" />
   </wsdl:message>
@@ -18489,6 +19039,14 @@
 
   <wsdl:message name="managedServicesPartitionGetResponse">
     <wsdl:part name="parameters" element="typens:managedServicesPartitionGetResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyAbbreviatedNumberListPaginatedRequest">
+    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberListPaginated" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyAbbreviatedNumberListPaginatedResponse">
+    <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberListPaginatedResponse" />
   </wsdl:message>
 
   <wsdl:message name="emailDelMasterNicRequest">
@@ -18883,20 +19441,20 @@
     <wsdl:part name="parameters" element="typens:telephonyClick2CallDoBySessionResponse" />
   </wsdl:message>
 
-  <wsdl:message name="prepaidGetThresholdRequest">
-    <wsdl:part name="parameters" element="typens:prepaidGetThreshold" />
-  </wsdl:message>
-
-  <wsdl:message name="prepaidGetThresholdResponse">
-    <wsdl:part name="parameters" element="typens:prepaidGetThresholdResponse" />
-  </wsdl:message>
-
   <wsdl:message name="telephonyAbbreviatedNumberAddRequest">
     <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberAdd" />
   </wsdl:message>
 
   <wsdl:message name="telephonyAbbreviatedNumberAddResponse">
     <wsdl:part name="parameters" element="typens:telephonyAbbreviatedNumberAddResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="prepaidGetThresholdRequest">
+    <wsdl:part name="parameters" element="typens:prepaidGetThreshold" />
+  </wsdl:message>
+
+  <wsdl:message name="prepaidGetThresholdResponse">
+    <wsdl:part name="parameters" element="typens:prepaidGetThresholdResponse" />
   </wsdl:message>
 
   <wsdl:message name="domainWhoisObfuscatorUnsetAllRequest">
@@ -18929,6 +19487,14 @@
 
   <wsdl:message name="telephonyNumberOrderResponse">
     <wsdl:part name="parameters" element="typens:telephonyNumberOrderResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyLineSetIpRestrictionRequest">
+    <wsdl:part name="parameters" element="typens:telephonyLineSetIpRestriction" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyLineSetIpRestrictionResponse">
+    <wsdl:part name="parameters" element="typens:telephonyLineSetIpRestrictionResponse" />
   </wsdl:message>
 
   <wsdl:message name="prepaidGetHistoryRequest">
@@ -18993,6 +19559,14 @@
 
   <wsdl:message name="popAttachMasterNicResponse">
     <wsdl:part name="parameters" element="typens:popAttachMasterNicResponse" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyVoicemailMessagesRemoteUploadRequest">
+    <wsdl:part name="parameters" element="typens:telephonyVoicemailMessagesRemoteUpload" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonyVoicemailMessagesRemoteUploadResponse">
+    <wsdl:part name="parameters" element="typens:telephonyVoicemailMessagesRemoteUploadResponse" />
   </wsdl:message>
 
   <wsdl:message name="crontabInfoRequest">
@@ -19483,6 +20057,14 @@
     <wsdl:part name="parameters" element="typens:dedicatedGetAvailableIpFromNetworkResponse" />
   </wsdl:message>
 
+  <wsdl:message name="telephonySmsBlacklistedSendersDeleteRequest">
+    <wsdl:part name="parameters" element="typens:telephonySmsBlacklistedSendersDelete" />
+  </wsdl:message>
+
+  <wsdl:message name="telephonySmsBlacklistedSendersDeleteResponse">
+    <wsdl:part name="parameters" element="typens:telephonySmsBlacklistedSendersDeleteResponse" />
+  </wsdl:message>
+
   <wsdl:message name="crontabModifyRequest">
     <wsdl:part name="parameters" element="typens:crontabModify" />
   </wsdl:message>
@@ -19796,6 +20378,11 @@
       <wsdl:output message="wsdlns:dedicatedBackupUpdateResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsList">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsListRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsListResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="serviceGroupList">
       <wsdl:input message="wsdlns:serviceGroupListRequest" />
       <wsdl:output message="wsdlns:serviceGroupListResponse" />
@@ -19949,6 +20536,11 @@
     <wsdl:operation name="automatedMailGetErrors">
       <wsdl:input message="wsdlns:automatedMailGetErrorsRequest" />
       <wsdl:output message="wsdlns:automatedMailGetErrorsResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsAdd">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsAddRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsAddResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="telephonyClick2CallUserDel">
@@ -20401,6 +20993,11 @@
       <wsdl:output message="wsdlns:telephonyLineLogsNotificationOptionsResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineGetIpRestriction">
+      <wsdl:input message="wsdlns:telephonyLineGetIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyLineGetIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="dedicatedInstallationTemplateList">
       <wsdl:input message="wsdlns:dedicatedInstallationTemplateListRequest" />
       <wsdl:output message="wsdlns:dedicatedInstallationTemplateListResponse" />
@@ -20566,6 +21163,11 @@
       <wsdl:output message="wsdlns:dedicatedFailoverRipeListResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicGetMgcpIpRestriction">
+      <wsdl:input message="wsdlns:telephonyNicGetMgcpIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyNicGetMgcpIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="telephonySmsGetUserQuotaForUser">
       <wsdl:input message="wsdlns:telephonySmsGetUserQuotaForUserRequest" />
       <wsdl:output message="wsdlns:telephonySmsGetUserQuotaForUserResponse" />
@@ -20724,6 +21326,11 @@
     <wsdl:operation name="telephonyConferenceRoomModify">
       <wsdl:input message="wsdlns:telephonyConferenceRoomModifyRequest" />
       <wsdl:output message="wsdlns:telephonyConferenceRoomModifyResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsDel">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsDelRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsDelResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="telephonyPhonebookShare">
@@ -20916,6 +21523,16 @@
       <wsdl:output message="wsdlns:dedicatedReverseModifyResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicGetIpRestriction">
+      <wsdl:input message="wsdlns:telephonyNicGetIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyNicGetIpRestrictionResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsContactDel">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsContactDelRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsContactDelResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="telephonyReversmentsRefundIsPending">
       <wsdl:input message="wsdlns:telephonyReversmentsRefundIsPendingRequest" />
       <wsdl:output message="wsdlns:telephonyReversmentsRefundIsPendingResponse" />
@@ -20969,6 +21586,11 @@
     <wsdl:operation name="telephonyHuntingGenericScreenStatusModify">
       <wsdl:input message="wsdlns:telephonyHuntingGenericScreenStatusModifyRequest" />
       <wsdl:output message="wsdlns:telephonyHuntingGenericScreenStatusModifyResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonySmsBlacklistedSendersList">
+      <wsdl:input message="wsdlns:telephonySmsBlacklistedSendersListRequest" />
+      <wsdl:output message="wsdlns:telephonySmsBlacklistedSendersListResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="telephonyPhonebookContactAdd">
@@ -21206,6 +21828,11 @@
       <wsdl:output message="wsdlns:cmsAvailableListResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicSetMgcpIpRestriction">
+      <wsdl:input message="wsdlns:telephonyNicSetMgcpIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyNicSetMgcpIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="telephonySecurityDepositCredit">
       <wsdl:input message="wsdlns:telephonySecurityDepositCreditRequest" />
       <wsdl:output message="wsdlns:telephonySecurityDepositCreditResponse" />
@@ -21366,9 +21993,19 @@
       <wsdl:output message="wsdlns:anonymousFtpInfoResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsContactModify">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsContactModifyRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsContactModifyResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="dedicatedCapabilitiesGet">
       <wsdl:input message="wsdlns:dedicatedCapabilitiesGetRequest" />
       <wsdl:output message="wsdlns:dedicatedCapabilitiesGetResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsModify">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsModifyRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsModifyResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="cmsList">
@@ -21531,6 +22168,11 @@
       <wsdl:output message="wsdlns:sqlpriveAlertSetResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicSetIpRestriction">
+      <wsdl:input message="wsdlns:telephonyNicSetIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyNicSetIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="dedicatedBackupIncludeDel">
       <wsdl:input message="wsdlns:dedicatedBackupIncludeDelRequest" />
       <wsdl:output message="wsdlns:dedicatedBackupIncludeDelResponse" />
@@ -21681,6 +22323,11 @@
       <wsdl:output message="wsdlns:telephonyLineLogsOnGroupResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineGetMgcpIpRestriction">
+      <wsdl:input message="wsdlns:telephonyLineGetMgcpIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyLineGetMgcpIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="databaseDelete">
       <wsdl:input message="wsdlns:databaseDeleteRequest" />
       <wsdl:output message="wsdlns:databaseDeleteResponse" />
@@ -21776,9 +22423,19 @@
       <wsdl:output message="wsdlns:serviceGroupSetCommentResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsContactList">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsContactListRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsContactListResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="nicCreateIT">
       <wsdl:input message="wsdlns:nicCreateITRequest" />
       <wsdl:output message="wsdlns:nicCreateITResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsContactAdd">
+      <wsdl:input message="wsdlns:telephonyPhonebookOnSmsContactAddRequest" />
+      <wsdl:output message="wsdlns:telephonyPhonebookOnSmsContactAddResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="dedicatedMonitoringNotificationDel">
@@ -21881,6 +22538,11 @@
       <wsdl:output message="wsdlns:telephonyToneDeleteResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineSetMgcpIpRestriction">
+      <wsdl:input message="wsdlns:telephonyLineSetMgcpIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyLineSetMgcpIpRestrictionResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="dedicatedInstallReset">
       <wsdl:input message="wsdlns:dedicatedInstallResetRequest" />
       <wsdl:output message="wsdlns:dedicatedInstallResetResponse" />
@@ -21926,6 +22588,11 @@
       <wsdl:output message="wsdlns:popModifyDescriptionResponse" />
     </wsdl:operation>
 
+    <wsdl:operation name="telephonyAbbreviatedNumberOnGroupDel">
+      <wsdl:input message="wsdlns:telephonyAbbreviatedNumberOnGroupDelRequest" />
+      <wsdl:output message="wsdlns:telephonyAbbreviatedNumberOnGroupDelResponse" />
+    </wsdl:operation>
+
     <wsdl:operation name="crontabAdd">
       <wsdl:input message="wsdlns:crontabAddRequest" />
       <wsdl:output message="wsdlns:crontabAddResponse" />
@@ -21936,11 +22603,6 @@
       <wsdl:output message="wsdlns:telephonySmsSenderDescriptionResponse" />
     </wsdl:operation>
 
-    <wsdl:operation name="telephonyAbbreviatedNumberOnGroupDel">
-      <wsdl:input message="wsdlns:telephonyAbbreviatedNumberOnGroupDelRequest" />
-      <wsdl:output message="wsdlns:telephonyAbbreviatedNumberOnGroupDelResponse" />
-    </wsdl:operation>
-
     <wsdl:operation name="mailingListModify">
       <wsdl:input message="wsdlns:mailingListModifyRequest" />
       <wsdl:output message="wsdlns:mailingListModifyResponse" />
@@ -21949,6 +22611,11 @@
     <wsdl:operation name="managedServicesPartitionGet">
       <wsdl:input message="wsdlns:managedServicesPartitionGetRequest" />
       <wsdl:output message="wsdlns:managedServicesPartitionGetResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyAbbreviatedNumberListPaginated">
+      <wsdl:input message="wsdlns:telephonyAbbreviatedNumberListPaginatedRequest" />
+      <wsdl:output message="wsdlns:telephonyAbbreviatedNumberListPaginatedResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="emailDelMasterNic">
@@ -22196,14 +22863,14 @@
       <wsdl:output message="wsdlns:telephonyClick2CallDoBySessionResponse" />
     </wsdl:operation>
 
-    <wsdl:operation name="prepaidGetThreshold">
-      <wsdl:input message="wsdlns:prepaidGetThresholdRequest" />
-      <wsdl:output message="wsdlns:prepaidGetThresholdResponse" />
-    </wsdl:operation>
-
     <wsdl:operation name="telephonyAbbreviatedNumberAdd">
       <wsdl:input message="wsdlns:telephonyAbbreviatedNumberAddRequest" />
       <wsdl:output message="wsdlns:telephonyAbbreviatedNumberAddResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="prepaidGetThreshold">
+      <wsdl:input message="wsdlns:prepaidGetThresholdRequest" />
+      <wsdl:output message="wsdlns:prepaidGetThresholdResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="domainWhoisObfuscatorUnsetAll">
@@ -22224,6 +22891,11 @@
     <wsdl:operation name="telephonyNumberOrder">
       <wsdl:input message="wsdlns:telephonyNumberOrderRequest" />
       <wsdl:output message="wsdlns:telephonyNumberOrderResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyLineSetIpRestriction">
+      <wsdl:input message="wsdlns:telephonyLineSetIpRestrictionRequest" />
+      <wsdl:output message="wsdlns:telephonyLineSetIpRestrictionResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="prepaidGetHistory">
@@ -22264,6 +22936,11 @@
     <wsdl:operation name="popAttachMasterNic">
       <wsdl:input message="wsdlns:popAttachMasterNicRequest" />
       <wsdl:output message="wsdlns:popAttachMasterNicResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonyVoicemailMessagesRemoteUpload">
+      <wsdl:input message="wsdlns:telephonyVoicemailMessagesRemoteUploadRequest" />
+      <wsdl:output message="wsdlns:telephonyVoicemailMessagesRemoteUploadResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="crontabInfo">
@@ -22569,6 +23246,11 @@
     <wsdl:operation name="dedicatedGetAvailableIpFromNetwork">
       <wsdl:input message="wsdlns:dedicatedGetAvailableIpFromNetworkRequest" />
       <wsdl:output message="wsdlns:dedicatedGetAvailableIpFromNetworkResponse" />
+    </wsdl:operation>
+
+    <wsdl:operation name="telephonySmsBlacklistedSendersDelete">
+      <wsdl:input message="wsdlns:telephonySmsBlacklistedSendersDeleteRequest" />
+      <wsdl:output message="wsdlns:telephonySmsBlacklistedSendersDeleteResponse" />
     </wsdl:operation>
 
     <wsdl:operation name="crontabModify">
@@ -22956,6 +23638,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsList">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsListRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsListResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="serviceGroupList">
       <soap:operation soapAction="" /> 
         <wsdl:input name="serviceGroupListRequest">
@@ -23262,6 +23954,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="automatedMailGetErrorsResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsAdd">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsAddRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsAddResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -24166,6 +24868,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineGetIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyLineGetIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyLineGetIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="dedicatedInstallationTemplateList">
       <soap:operation soapAction="" /> 
         <wsdl:input name="dedicatedInstallationTemplateListRequest">
@@ -24496,6 +25208,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicGetMgcpIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyNicGetMgcpIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyNicGetMgcpIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="telephonySmsGetUserQuotaForUser">
       <soap:operation soapAction="" /> 
         <wsdl:input name="telephonySmsGetUserQuotaForUserRequest">
@@ -24812,6 +25534,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="telephonyConferenceRoomModifyResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsDel">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsDelRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsDelResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -25196,6 +25928,26 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicGetIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyNicGetIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyNicGetIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsContactDel">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsContactDelRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsContactDelResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="telephonyReversmentsRefundIsPending">
       <soap:operation soapAction="" /> 
         <wsdl:input name="telephonyReversmentsRefundIsPendingRequest">
@@ -25302,6 +26054,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="telephonyHuntingGenericScreenStatusModifyResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonySmsBlacklistedSendersList">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonySmsBlacklistedSendersListRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonySmsBlacklistedSendersListResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -25776,6 +26538,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicSetMgcpIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyNicSetMgcpIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyNicSetMgcpIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="telephonySecurityDepositCredit">
       <soap:operation soapAction="" /> 
         <wsdl:input name="telephonySecurityDepositCreditRequest">
@@ -26096,12 +26868,32 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsContactModify">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsContactModifyRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsContactModifyResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="dedicatedCapabilitiesGet">
       <soap:operation soapAction="" /> 
         <wsdl:input name="dedicatedCapabilitiesGetRequest">
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="dedicatedCapabilitiesGetResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsModify">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsModifyRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsModifyResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -26426,6 +27218,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyNicSetIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyNicSetIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyNicSetIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="dedicatedBackupIncludeDel">
       <soap:operation soapAction="" /> 
         <wsdl:input name="dedicatedBackupIncludeDelRequest">
@@ -26726,6 +27528,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineGetMgcpIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyLineGetMgcpIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyLineGetMgcpIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="databaseDelete">
       <soap:operation soapAction="" /> 
         <wsdl:input name="databaseDeleteRequest">
@@ -26916,12 +27728,32 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyPhonebookOnSmsContactList">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsContactListRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsContactListResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="nicCreateIT">
       <soap:operation soapAction="" /> 
         <wsdl:input name="nicCreateITRequest">
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="nicCreateITResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyPhonebookOnSmsContactAdd">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyPhonebookOnSmsContactAddRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyPhonebookOnSmsContactAddResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -27126,6 +27958,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyLineSetMgcpIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyLineSetMgcpIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyLineSetMgcpIpRestrictionResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="dedicatedInstallReset">
       <soap:operation soapAction="" /> 
         <wsdl:input name="dedicatedInstallResetRequest">
@@ -27216,6 +28058,16 @@
         </wsdl:output>
      </wsdl:operation>
 
+    <wsdl:operation name="telephonyAbbreviatedNumberOnGroupDel">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyAbbreviatedNumberOnGroupDelRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyAbbreviatedNumberOnGroupDelResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
     <wsdl:operation name="crontabAdd">
       <soap:operation soapAction="" /> 
         <wsdl:input name="crontabAddRequest">
@@ -27236,16 +28088,6 @@
         </wsdl:output>
      </wsdl:operation>
 
-    <wsdl:operation name="telephonyAbbreviatedNumberOnGroupDel">
-      <soap:operation soapAction="" /> 
-        <wsdl:input name="telephonyAbbreviatedNumberOnGroupDelRequest">
-          <soap:body use="literal" />
-        </wsdl:input>
-        <wsdl:output name="telephonyAbbreviatedNumberOnGroupDelResponse">
-          <soap:body use="literal" />
-        </wsdl:output>
-     </wsdl:operation>
-
     <wsdl:operation name="mailingListModify">
       <soap:operation soapAction="" /> 
         <wsdl:input name="mailingListModifyRequest">
@@ -27262,6 +28104,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="managedServicesPartitionGetResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyAbbreviatedNumberListPaginated">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyAbbreviatedNumberListPaginatedRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyAbbreviatedNumberListPaginatedResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -27756,22 +28608,22 @@
         </wsdl:output>
      </wsdl:operation>
 
-    <wsdl:operation name="prepaidGetThreshold">
-      <soap:operation soapAction="" /> 
-        <wsdl:input name="prepaidGetThresholdRequest">
-          <soap:body use="literal" />
-        </wsdl:input>
-        <wsdl:output name="prepaidGetThresholdResponse">
-          <soap:body use="literal" />
-        </wsdl:output>
-     </wsdl:operation>
-
     <wsdl:operation name="telephonyAbbreviatedNumberAdd">
       <soap:operation soapAction="" /> 
         <wsdl:input name="telephonyAbbreviatedNumberAddRequest">
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="telephonyAbbreviatedNumberAddResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="prepaidGetThreshold">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="prepaidGetThresholdRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="prepaidGetThresholdResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -27812,6 +28664,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="telephonyNumberOrderResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyLineSetIpRestriction">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyLineSetIpRestrictionRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyLineSetIpRestrictionResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -27892,6 +28754,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="popAttachMasterNicResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonyVoicemailMessagesRemoteUpload">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonyVoicemailMessagesRemoteUploadRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonyVoicemailMessagesRemoteUploadResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
@@ -28502,6 +29374,16 @@
           <soap:body use="literal" />
         </wsdl:input>
         <wsdl:output name="dedicatedGetAvailableIpFromNetworkResponse">
+          <soap:body use="literal" />
+        </wsdl:output>
+     </wsdl:operation>
+
+    <wsdl:operation name="telephonySmsBlacklistedSendersDelete">
+      <soap:operation soapAction="" /> 
+        <wsdl:input name="telephonySmsBlacklistedSendersDeleteRequest">
+          <soap:body use="literal" />
+        </wsdl:input>
+        <wsdl:output name="telephonySmsBlacklistedSendersDeleteResponse">
           <soap:body use="literal" />
         </wsdl:output>
      </wsdl:operation>
