@@ -38,6 +38,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  httpclient
+  httpclient (~> 2.2.5)
   rspec
   savon (= 1.1.0)

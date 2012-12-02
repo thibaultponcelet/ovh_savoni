@@ -1,3 +1,3 @@
 module OvhSavoni
-  VERSION = "1.44.0"
+  VERSION = "1.54.0"
 end
