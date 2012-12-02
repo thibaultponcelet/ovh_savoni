@@ -19,3 +19,6 @@ examples/*_test.rb
 .yardoc
 _yardoc
 doc/
+
+
+.DS_Store

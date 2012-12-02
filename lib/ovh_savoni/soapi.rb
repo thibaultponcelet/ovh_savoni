@@ -5,7 +5,7 @@ class OvhSavoni::SoAPI
   end
   # Initialize soap connection
   @soap = Savon::Client.new do
-    wsdl.document =File.expand_path("../../soapi-dlw-1.44.wsdl" , __FILE__)
+    wsdl.document =File.expand_path("../../soapi-dlw-1.54.wsdl" , __FILE__)
   end
   # Initialize the class structure on the basis of the WSDL file
   # Meta definition of one method for each action
