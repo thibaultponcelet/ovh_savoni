@@ -1,16 +1,11 @@
 class OvhSavoni::ResponseBuilder
-  
+
   # Build a Response class
   def self.build(r,action)
     if r.is_a?(Hash) # Build the class from the hash
-      const = "OvhSavoniResponse_#{action}"
-      klass=nil
-      if Struct.const_defined?(const) 
-        klass=Struct.const_get(const) 
-      else # Create a new struct if not exist already
-        klass=Struct.new(const,*r.keys)
-        build_class(klass,action)
-      end
+      klass=Struct.new(*r.keys)
+      build_class(klass,action)
+
       ret = klass.new(*r.values) # Instanciate the class
       if ret.members.include?(:item) && [:item].is_a?(Array)
         ret.item
@@ -21,10 +16,10 @@ class OvhSavoni::ResponseBuilder
       r
     end
   end
-  
+
   # Add recursive construction behavior to the class initializer
   def self.build_class(klass,action)
-    klass.class_eval do 
+    klass.class_eval do
       define_method(:initialize) do |*args|
         super(*args)
         each do |inst|
